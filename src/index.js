@@ -1,23 +1,21 @@
-console.log("cloned successfully");
+import dotenv from "dotenv";
 
-console.log("hi there");
-require("dotenv").config();
-const express = require("express");
-const app = express();
-const port = 4000;
+dotenv.config();
+// require("dotenv").config();
 
-app.get("/", (req, res) => {
-  res.send("hi there");
-});
+import mongoose from "mongoose";
+import { DB_NAME } from "./constants.js";
+import DB_connect from "./db/index.js";
 
-app.get("/insta", (req, res) => {
-  res.send("my insta handle");
-});
+DB_connect();
 
-app.listen(process.env.PORT, () => {
-  console.log(`listening app on ${port}`);
-});
+// ;(async () => {
+//   try {
+//     await mongoose.connect(`${process.env.MONGODB_URL}/${process.env.DB_NAME}`);
+//     console.log("DB Connected successfullly");
+//   } catch (error) {
+//     console.error("ERROR", error);
+//   }
+// })();
 
-app.get("/youtube", (req, res) => {
-  res.send("<h1>hahaha</h1>");
-});
+// console.log(JSON.stringify(process.env.MONGODB_URL))
